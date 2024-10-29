@@ -1,0 +1,44 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Oxanium", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 1140px;
+  margin-left: 100px;
+  margin-right: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+/* Navbar CSS*/
+
+nav {
+  background-color: #121212;
+  color: #fff;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+#logo-box .logo {
+  color: #fff;
+  font-weight: 700;
+  font-size: 32px;
+}
