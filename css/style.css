@@ -14,8 +14,8 @@ html {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  height: auto; /* veya height ayarını kaldırabilirsiniz */
+  min-height: 100%;
 }
 
 h1,
@@ -135,7 +135,7 @@ header h3 {
 
 .hr-line {
   border: none;
-  border-top: 4px solid #fff;
+  border-top: 5px solid #fff;
   max-width: 50%;
   margin: 2.5px auto;
 }
@@ -155,4 +155,107 @@ header h3 {
 .clock-size {
   max-width: 100%;
   height: auto;
+}
+
+/* Portfolio */
+
+#portfolio {
+  height: 100%;
+  padding-top: 200px;
+  padding-bottom: 100px;
+  background-color: #121212;
+  text-align: center;
+  color: #fff;
+}
+
+#portfolio h2 {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+#portfolio p {
+  padding: 20px;
+  font-size: 20px;
+}
+
+.col {
+  padding: 10px;
+  float: left;
+  width: 33.33%;
+  box-sizing: border-box;
+}
+
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-item img {
+  width: 500px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #007bff;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.img-overlay .explanation {
+  color: #ffffff;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  text-align: center;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.project-description {
+  color: #fff;
+  font-size: 18px;
+  padding-top: 10px;
+  margin-top: 10px;
+  background-color: #121212;
+  z-index: 2;
+  position: relative;
+  transition: none;
+}
+
+.portfolio-item:hover {
+  .img-overlay {
+    opacity: 0.6;
+  }
+}
+
+.project-description:hover {
+  color: #fff;
+  transition: none;
+}
+
+#filter-buttons {
+  margin: 20px 0;
+}
+
+.filter-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #00bfff;
 }
