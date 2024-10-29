@@ -12,12 +12,26 @@ body {
   background-color: #fff;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
 a {
   text-decoration: none;
 }
 
 ul {
   list-style-type: none;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
 }
 
 .clearfix::after {
@@ -27,9 +41,8 @@ ul {
 }
 
 .container {
-  width: 1140px;
-  margin-left: 100px;
-  margin-right: auto;
+  width: 90%;
+  margin: 0 auto;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -41,10 +54,15 @@ ul {
 /* Navbar CSS*/
 
 nav {
+  width: 100%;
   background-color: #121212;
   color: #fff;
   padding-top: 25px;
   padding-bottom: 25px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 #logo-box {
@@ -79,4 +97,18 @@ nav {
 
 #nav-links .nav-link:hover {
   color: #00bfff;
+}
+
+/* Header CSS */
+
+header {
+  background-color: #121212;
+  padding-top: 114px;
+  padding-bottom: 114px;
+  text-align: center;
+}
+
+header h1 {
+  color: #fff;
+  font-size: 70px;
 }
