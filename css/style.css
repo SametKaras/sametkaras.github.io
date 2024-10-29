@@ -351,3 +351,53 @@ header h3 {
 #toggle-btn:hover {
   background-color: #00bfff;
 }
+
+/* Contact Section */
+#contact {
+  margin-top: 80px;
+  min-height: 100vh;
+  padding: 100px 0;
+  background-color: #121212; /* Siyah arka plan rengi */
+  color: #fff;
+  text-align: center;
+}
+
+#contact .form-group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#contact label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #fff; /* Beyaz renk */
+}
+
+#contact h2 {
+  font-size: 40px;
+  margin-bottom: 25px;
+}
+
+#contact input,
+#contact textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #333; /* Koyu arka plan */
+  color: #fff; /* Beyaz yazı rengi */
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  border-color: #007bff; /* Mavi odak rengi */
+  outline: none;
+}
+
+.error-message {
+  color: #ff0000;
+  margin-top: 10px;
+  font-size: 14px;
+}
