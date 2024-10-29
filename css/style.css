@@ -4,12 +4,18 @@
   box-sizing: border-box;
 }
 
-body {
+body,
+html {
   font-family: "Oxanium", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
   background-color: #fff;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 h1,
@@ -45,6 +51,7 @@ ul {
   margin: 0 auto;
   padding-left: 5px;
   padding-right: 5px;
+  text-align: center;
 }
 
 .text-uppercase {
@@ -102,13 +109,50 @@ nav {
 /* Header CSS */
 
 header {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #121212;
-  padding-top: 114px;
-  padding-bottom: 114px;
-  text-align: center;
 }
 
 header h1 {
   color: #fff;
   font-size: 70px;
+}
+
+header h2 {
+  color: #fff;
+  font-size: 40px;
+  margin-top: 25px;
+}
+
+header h3 {
+  color: #fff;
+  font-size: 25px;
+}
+
+.hr-line {
+  border: none;
+  border-top: 4px solid #fff;
+  max-width: 50%;
+  margin: 2.5px auto;
+}
+
+/* Dinamik Saat CSS */
+#dynamic-clock {
+  color: #00bfff;
+  font-size: 75px;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock-size {
+  max-width: 100%;
+  height: auto;
 }
