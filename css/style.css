@@ -116,6 +116,13 @@ nav {
   display: none;
 }
 
+.nav-link.active {
+  font-weight: bold; /* Aktif bağlantının daha kalın görünmesi için */
+  color: #007bff; /* İstediğiniz rengi ekleyin */
+  border-bottom: 2px solid #007bff; /* Alt çizgi eklemek için */
+  text-decoration: none; /* Alt çizgi veya başka dekorasyonları kaldırmak için */
+}
+
 @media (max-width: 992px) {
   #logo-box {
     float: none;
