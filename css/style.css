@@ -112,6 +112,42 @@ nav {
   color: #00bfff;
 }
 
+#nav-links .nav-icon {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  #logo-box {
+    float: none;
+    text-align: left;
+  }
+  #nav-links {
+    float: none;
+  }
+
+  #nav-links.responsive li:not(:first-child) {
+    display: none;
+  }
+
+  #nav-links .nav-link {
+    font-size: 20px;
+    padding-left: 0;
+  }
+
+  #nav-links .nav-item {
+    float: none;
+    text-align: left;
+  }
+
+  #nav-links .nav-icon {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    font-size: 30px;
+  }
+}
+
 /* Header CSS */
 
 header {
@@ -184,7 +220,7 @@ header h3 {
 .col {
   padding: 10px;
   float: left;
-  width: 33.33%;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -400,4 +436,51 @@ header h3 {
   color: #ff0000;
   margin-top: 10px;
   font-size: 14px;
+}
+
+/* Responsive CSS */
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+  html {
+    font-size: 7px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+  html {
+    font-size: 8px;
+  }
+
+  .col {
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+
+  html {
+    font-size: 9px;
+  }
+  .col {
+    width: 33%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+
+  html {
+    font-size: 10px;
+  }
 }
