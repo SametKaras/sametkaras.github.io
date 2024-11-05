@@ -1,69 +1,3 @@
-/* Flexbox Navbar */
-nav .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#nav-links ul {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-/* Flexbox Portfolio Images */
-#portfolio-images {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.portfolio-item {
-  flex: 1 1 calc(33.333% - 40px);
-  max-width: calc(33.333% - 40px);
-  position: relative;
-}
-
-@media (max-width: 768px) {
-  .portfolio-item {
-    flex: 1 1 calc(50% - 20px);
-    max-width: calc(50% - 20px);
-  }
-}
-
-@media (max-width: 576px) {
-  .portfolio-item {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-}
-
-/* Flexbox About Section */
-#about-text .about-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 20px;
-}
-
-/* Flexbox Contact Form */
-#contact .form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Flexbox Filter Buttons */
-#filter-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -130,7 +64,8 @@ section {
   text-transform: uppercase;
 }
 
-/* Navbar CSS */
+/* Navbar CSS*/
+
 nav {
   width: 100%;
   background-color: #121212;
@@ -182,10 +117,10 @@ nav {
 }
 
 .nav-link.active {
-  font-weight: bold;
-  color: #007bff;
-  border-bottom: 2px solid #007bff;
-  text-decoration: none;
+  font-weight: bold; /* Aktif bağlantının daha kalın görünmesi için */
+  color: #007bff; /* İstediğiniz rengi ekleyin */
+  border-bottom: 2px solid #007bff; /* Alt çizgi eklemek için */
+  text-decoration: none; /* Alt çizgi veya başka dekorasyonları kaldırmak için */
 }
 
 @media (max-width: 992px) {
@@ -221,6 +156,7 @@ nav {
 }
 
 /* Header CSS */
+
 header {
   width: 100vw;
   height: 100vh;
@@ -253,7 +189,7 @@ header h3 {
   margin: 2.5px auto;
 }
 
-/* Dynamic Clock CSS */
+/* Dinamik Saat CSS */
 #dynamic-clock {
   color: #00bfff;
   font-size: 75px;
@@ -271,6 +207,7 @@ header h3 {
 }
 
 /* Portfolio */
+
 #portfolio {
   height: 100%;
   background-color: #121212;
@@ -340,8 +277,10 @@ header h3 {
   transition: none;
 }
 
-.portfolio-item:hover .img-overlay {
-  opacity: 0.6;
+.portfolio-item:hover {
+  .img-overlay {
+    opacity: 0.6;
+  }
 }
 
 .project-description:hover {
@@ -374,6 +313,7 @@ header h3 {
 }
 
 /* About CSS */
+
 #about {
   min-height: 100vh;
   background-color: #121212;
@@ -460,7 +400,7 @@ header h3 {
   margin-top: 80px;
   min-height: 100vh;
   padding: 100px 0;
-  background-color: #121212;
+  background-color: #121212; /* Siyah arka plan rengi */
   color: #fff;
   text-align: center;
 }
@@ -474,7 +414,7 @@ header h3 {
   display: block;
   margin-bottom: 5px;
   font-size: 18px;
-  color: #fff;
+  color: #fff; /* Beyaz renk */
 }
 
 #contact h2 {
@@ -489,13 +429,13 @@ header h3 {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #333;
-  color: #fff;
+  background-color: #333; /* Koyu arka plan */
+  color: #fff; /* Beyaz yazı rengi */
 }
 
 #contact input:focus,
 #contact textarea:focus {
-  border-color: #007bff;
+  border-color: #007bff; /* Mavi odak rengi */
   outline: none;
 }
 
@@ -506,6 +446,7 @@ header h3 {
 }
 
 /* Responsive CSS */
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
