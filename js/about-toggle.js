@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
   toggleButton.addEventListener("click", () => {
     if (moreInfo.style.display === "none") {
       moreInfo.style.display = "block";
-      toggleButton.innerText = "See Less";
+      toggleButton.innerText = "Daha Az Gör";
     } else {
       moreInfo.style.display = "none";
-      toggleButton.innerText = "See More";
+      toggleButton.innerText = "Daha Fazla Gör";
     }
   });
 });

@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const errorMessage = document.getElementById("error-message");
 
   form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Formun gönderilmesini engeller
-    errorMessage.innerText = ""; // Önceki hata mesajlarını temizler
+    event.preventDefault();
+    errorMessage.innerText = "";
 
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
@@ -12,35 +12,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let isValid = true;
 
-    // İsim alanı boş mu kontrolü
     if (name === "") {
       isValid = false;
-      errorMessage.innerText = "Please enter your name.";
+      errorMessage.innerText = "Lütfen isminizi giriniz.";
     }
 
-    // E-posta kontrolü
     if (email === "") {
       isValid = false;
-      errorMessage.innerText += "\nPlease enter your email address.";
+      errorMessage.innerText += "\nLütfen emailinizi giriniz.";
     } else if (!validateEmail(email)) {
       isValid = false;
-      errorMessage.innerText += "\nPlease enter a valid email address.";
+      errorMessage.innerText += "\nLütfen geçerli email giriniz. ";
     }
 
-    // Mesaj alanı boş mu kontrolü
     if (message === "") {
       isValid = false;
-      errorMessage.innerText += "\nPlease enter your message.";
+      errorMessage.innerText += "\nLütfen mesajınızı giriniz.";
     }
 
     if (isValid) {
-      // Geçerli ise formu gönderebiliriz veya başarı mesajı gösterebiliriz
-      alert("Your message has been sent successfully!");
-      form.reset(); // Formu temizler
+      alert("Mesajınız başarıyla gönderildi.");
+      form.reset();
     }
   });
 
-  // E-posta doğrulama fonksiyonu
   function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
