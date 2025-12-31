@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { navigation } from "@/data/personal";
@@ -61,9 +62,16 @@ export function Header() {
             <nav className="relative max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                 <Link
                     href="/"
-                    className="text-xl font-bold tracking-tight hover:text-[var(--accent)] transition-colors"
+                    className="group flex items-center transition-transform hover:scale-105"
                 >
-                    SK
+                    <Image
+                        src="/favicon-32x32.png"
+                        alt="SK Logo"
+                        width={32}
+                        height={32}
+                        className="transition-all duration-200 group-hover:drop-shadow-[0_0_8px_rgba(210,255,0,0.6)]"
+                        priority
+                    />
                 </Link>
 
                 {/* Desktop Navigation */}
