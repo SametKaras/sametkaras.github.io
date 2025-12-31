@@ -52,12 +52,39 @@ function useNavGlow() {
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
     const { handlePointerMove, handlePointerEnter, handlePointerLeave } = useNavGlow();
 
+    // Track scroll position for navbar opacity
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll(); // Check initial position
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <header className="fixed top-0 left-0 right-0 z-50">
-            <div className="absolute inset-0 bg-[var(--background)]/80 backdrop-blur-md border-b border-[var(--border)]" />
+            {/* Frosted glass background with scroll-aware opacity */}
+            <div
+                className={cn(
+                    "absolute inset-0 backdrop-blur-xl transition-all duration-300",
+                    isScrolled
+                        ? "bg-black/50 border-b border-[var(--accent)]/10"
+                        : "bg-black/30 border-b border-white/5"
+                )}
+            />
+            {/* Subtle accent gradient line at bottom */}
+            <div
+                className={cn(
+                    "absolute bottom-0 left-0 right-0 h-px transition-opacity duration-300",
+                    "bg-gradient-to-r from-transparent via-[var(--accent)]/20 to-transparent",
+                    isScrolled ? "opacity-100" : "opacity-50"
+                )}
+            />
 
             <nav className="relative max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                 <Link
