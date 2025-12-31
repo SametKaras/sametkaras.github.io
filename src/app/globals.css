@@ -1,0 +1,408 @@
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN SYSTEM: Premium Dark Theme
+   Accent: #D2FF00 (Electric Lime)
+   ============================================ */
+
+/* Custom CSS Variables */
+:root {
+  /* Core Colors */
+  --background: #050505;
+  --background-alt: #0a0a0a;
+  --foreground: #fafafa;
+  --surface: #0f0f0f;
+  --surface-hover: #151515;
+  --border: #1a1a1a;
+  --border-hover: #252525;
+  --text-muted: #777777;
+  --text-muted-hover: #999999;
+
+  /* Accent: Electric Lime */
+  --accent: #D2FF00;
+  --accent-hover: #BFEB00;
+  --accent-dim: rgba(210, 255, 0, 0.06);
+  --accent-glow: rgba(210, 255, 0, 0.12);
+  --accent-bright: rgba(210, 255, 0, 0.25);
+
+  /* Glow Effect Variables (set by JS on hover) */
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-opacity: 0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-text-muted: var(--text-muted);
+  --color-text-muted-hover: var(--text-muted-hover);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-dim: var(--accent-dim);
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================
+   GLOBAL BACKGROUND SYSTEM
+   5 Layers: Gradient → Light Fields → Grid → Noise → Vignette
+   + Scroll/Cursor interaction response
+   ============================================ */
+
+.global-background {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  /* Behind all content */
+  overflow: hidden;
+  /* CSS custom properties set by JS for interaction */
+  --scroll-offset: 0px;
+  --cursor-x: 50%;
+  --cursor-y: 50%;
+}
+
+/* Layer 1: Rich dark gradient base (not flat black) */
+.global-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Primary depth gradient with visible color */
+    linear-gradient(180deg,
+      #0d0d10 0%,
+      #0a0a0d 25%,
+      #080810 50%,
+      #060608 75%,
+      #040406 100%),
+    /* Visible color tints */
+    radial-gradient(ellipse 120% 80% at 50% 0%, rgba(30, 40, 35, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 60% at 100% 100%, rgba(20, 25, 35, 0.4) 0%, transparent 50%);
+}
+
+/* Layer 2: Light fields - CLEARLY VISIBLE soft radial glows */
+.global-bg-lightfield {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  will-change: transform;
+  transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Light field 1: TOP HERO AREA - main visible glow behind title */
+.global-bg-lightfield-1 {
+  width: 100vw;
+  height: 70vh;
+  top: -10vh;
+  left: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%,
+      rgba(210, 255, 0, 0.15) 0%,
+      rgba(180, 220, 30, 0.08) 30%,
+      rgba(150, 190, 20, 0.03) 50%,
+      transparent 70%);
+  transform: translateY(calc(var(--scroll-offset) * -0.3)) translateX(calc((var(--cursor-x) - 50%) * 0.1));
+}
+
+/* Light field 2: Left side accent */
+.global-bg-lightfield-2 {
+  width: 60vw;
+  height: 60vh;
+  top: 40vh;
+  left: -15vw;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%,
+      rgba(210, 255, 0, 0.12) 0%,
+      rgba(180, 220, 20, 0.05) 40%,
+      transparent 70%);
+  transform: translateY(calc(var(--scroll-offset) * 0.2)) translateX(calc((var(--cursor-x) - 50%) * -0.05));
+}
+
+/* Light field 3: Bottom-right glow */
+.global-bg-lightfield-3 {
+  width: 50vw;
+  height: 50vh;
+  bottom: -10vh;
+  right: -10vw;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%,
+      rgba(200, 240, 60, 0.10) 0%,
+      rgba(160, 200, 40, 0.04) 40%,
+      transparent 65%);
+  transform: translateY(calc(var(--scroll-offset) * 0.4)) translateX(calc((var(--cursor-x) - 50%) * 0.08));
+}
+
+/* Layer 3: Tech grid pattern (vector field feel) */
+.global-bg-grid {
+  position: absolute;
+  inset: 0;
+  /* Dot matrix + lines pattern */
+  background-image:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px, 80px 80px, 80px 80px;
+  background-position: 0 0, 0 0, 0 0;
+  /* Fade out towards edges */
+  mask-image:
+    radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 80%);
+  -webkit-mask-image:
+    radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 80%);
+}
+
+/* Layer 4: Noise texture overlay (material feel) */
+.global-bg-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* Layer 5: Vignette for depth and focus */
+.global-bg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 50% 50%,
+      transparent 30%,
+      rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Creates stacking context so z-index: -1 on background works */
+  isolation: isolate;
+}
+
+body {
+  /* Background handled by GlobalBackground component */
+  background: transparent;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   CURSOR GLOW EFFECT SYSTEM
+   Classes: .glow-card, .glow-button, .glow-link
+   ============================================ */
+
+/* === GLOW CARD (for project cards, panels) === */
+.glow-card {
+  position: relative;
+  overflow: hidden;
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-opacity: 0;
+}
+
+/* Radial glow that follows cursor */
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(500px circle at var(--glow-x) var(--glow-y),
+      var(--accent-glow),
+      transparent 40%);
+  opacity: var(--glow-opacity);
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Fresnel-like border glow effect */
+.glow-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg,
+      rgba(210, 255, 0, calc(0.15 * var(--glow-opacity))),
+      transparent 40%,
+      transparent 60%,
+      rgba(210, 255, 0, calc(0.08 * var(--glow-opacity))));
+  pointer-events: none;
+  z-index: 2;
+  opacity: var(--glow-opacity);
+  transition: opacity 0.4s ease;
+}
+
+/* Ensure card content is above glow */
+.glow-card>* {
+  position: relative;
+  z-index: 3;
+}
+
+/* === GLOW BUTTON (for CTA buttons) === */
+.glow-button {
+  position: relative;
+  overflow: hidden;
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-opacity: 0;
+}
+
+.glow-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120px circle at var(--glow-x) var(--glow-y),
+      rgba(210, 255, 0, 0.25),
+      transparent 60%);
+  opacity: var(--glow-opacity);
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-button>* {
+  position: relative;
+  z-index: 1;
+}
+
+/* === GLOW LINK (for nav items) === */
+.glow-link {
+  position: relative;
+  --glow-x: 50%;
+  --glow-opacity: 0;
+}
+
+.glow-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: radial-gradient(60px circle at var(--glow-x) 50%,
+      var(--accent),
+      transparent 70%);
+  opacity: var(--glow-opacity);
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Disable light field parallax transforms */
+  .global-bg-lightfield {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .global-bg-grid {
+    transform: none !important;
+  }
+
+  /* Disable cursor glow effects */
+  .glow-card::before,
+  .glow-card::after,
+  .glow-button::before,
+  .glow-link::after {
+    display: none !important;
+  }
+
+  /* Fallback: simple border highlight on hover */
+  .glow-card:hover {
+    border-color: var(--accent) !important;
+  }
+
+  .glow-button:hover {
+    background-color: var(--accent) !important;
+  }
+}
+
+/* ============================================
+   LENIS SMOOTH SCROLL
+   ============================================ */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
