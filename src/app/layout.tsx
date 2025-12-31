@@ -30,10 +30,25 @@ export const metadata: Metadata = {
     ],
     authors: [{ name: "Samet Karaş" }],
     creator: "Samet Karaş",
+    // Favicon and icon configuration with cache-busting
+    icons: {
+        icon: [
+            { url: "/favicon.ico?v=2", sizes: "any" },
+            { url: "/favicon-16x16.png?v=2", sizes: "16x16", type: "image/png" },
+            { url: "/favicon-32x32.png?v=2", sizes: "32x32", type: "image/png" },
+        ],
+        apple: [
+            { url: "/apple-touch-icon.png?v=2", sizes: "180x180", type: "image/png" },
+        ],
+        other: [
+            { rel: "android-chrome-192x192", url: "/android-chrome-192x192.png?v=2" },
+            { rel: "android-chrome-512x512", url: "/android-chrome-512x512.png?v=2" },
+        ],
+    },
     openGraph: {
         type: "website",
         locale: "en_US",
-        url: "https://sametkaras.com",
+        url: "https://sametkaras.github.io",
         siteName: "Samet Karaş Portfolio",
         title: "Samet Karaş | Software Developer",
         description:
