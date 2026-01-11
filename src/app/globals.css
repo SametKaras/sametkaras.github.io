@@ -406,3 +406,67 @@ html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* ============================================
+   MOBILE FIX - Responsive Fixes
+   ============================================ */
+
+/* MOBILE FIX - Prevent horizontal overflow on all devices */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* MOBILE FIX - iOS Safari viewport height fix */
+@supports (-webkit-touch-callout: none) {
+
+  html,
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* MOBILE FIX - Background color fallback for mobile browsers */
+html {
+  background: var(--background);
+}
+
+body {
+  background: var(--background);
+}
+
+/* MOBILE FIX - Disable hover effects on touch devices */
+@media (hover: none) and (pointer: coarse) {
+
+  .glow-card::before,
+  .glow-card::after,
+  .glow-button::before,
+  .glow-link::after {
+    display: none !important;
+  }
+
+  .global-bg-lightfield {
+    transform: none !important;
+  }
+}
+
+/* MOBILE FIX - Small screen adjustments */
+@media screen and (max-width: 768px) {
+
+  /* MOBILE FIX - Ensure background covers full viewport */
+  .global-background {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  /* MOBILE FIX - Reduce blur for better mobile performance */
+  .global-bg-lightfield {
+    filter: blur(60px);
+  }
+
+  /* MOBILE FIX - Simplify grid pattern on mobile */
+  .global-bg-grid {
+    background-size: 30px 30px, 60px 60px, 60px 60px;
+  }
+}
